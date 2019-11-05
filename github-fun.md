@@ -9,5 +9,5 @@ catchevolution-sidebarlayout:
   - default
 ---
 <!-- wp:paragraph -->
-<p> [md_github token=182d2768c25aac3631120f1347316c4525306abb url=https://github.com/OsirisTerje/IFix/blob/master/README.md] </p>
+<p> [md_github token=<your token> url=https://github.com/OsirisTerje/IFix/blob/master/README.md] </p>
 <!-- /wp:paragraph -->
