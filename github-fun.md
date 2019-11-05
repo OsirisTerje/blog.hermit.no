@@ -4,10 +4,10 @@ title: Github fun
 date: 2019-11-04T17:24:56+01:00
 author: terje
 layout: page
-guid: http://hermit.no/?page_id=160653
+
 catchevolution-sidebarlayout:
   - default
 ---
 <!-- wp:paragraph -->
-<p> [md_github token=<your token> url=https://github.com/OsirisTerje/IFix/blob/master/README.md] </p>
+<p> [md_github token= *your token* url=https://github.com/OsirisTerje/IFix/blob/master/README.md] </p>
 <!-- /wp:paragraph -->
