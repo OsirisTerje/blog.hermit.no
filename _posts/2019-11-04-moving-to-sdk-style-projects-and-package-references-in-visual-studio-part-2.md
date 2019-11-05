@@ -4,7 +4,6 @@ title: Moving to SDK-Style projects and package references in Visual Studio, par
 date: 2019-11-04T16:01:13+01:00
 author: terje
 layout: post
-guid: http://hermit.no/?p=160621
 permalink: /moving-to-sdk-style-projects-and-package-references-in-visual-studio-part-2/
 catchevolution-sidebarlayout:
   - default
