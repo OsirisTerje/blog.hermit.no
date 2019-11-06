@@ -6,16 +6,21 @@ Some version are in the LTS (Long Term Support) mode.  This means they will rece
 
 Looking at how this is for .Net Core, the following screen shot is from the [.Net Core LifeCycle](https://dotnet.microsoft.com/download/dotnet-core) per Nov 6th 2019.
 
-![](images/2019-11-06_17-10-12.jpg)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/2019-11-06_17-10-12.jpg)
+
+Note that the only usable .Net Core version will be version 3.0 by the end of this year!  The .Net Core 2.1 will be on LTS.  
 
 The [.Net Core Support Policy](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) describes in more details how this works, also what release cadence they have right now.
 
 And a similar list for the [.Net Framework lifecycle](https://dotnet.microsoft.com/download/dotnet-framework)
 
-![](images/2019-11-06_20-56-00.jpg)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/2019-11-06_20-56-00.jpg)
 
 As can be seen here the .net 4.0 to .net 4.5.1 is at end of life. If you got anything here, it is really time to upgrade.
 
+Now all of this doesn't mean that you can't use the older versions, at least when they are fairly new, likt .Net Core 2.2.  But, as time goes on, you could expect to see other tools dropping support.  
+
+For [NUnit](https://nunit.org) - support for .Net Core 1.* is being dropped now. 
 
 ## Supported OS lifecycles
 
