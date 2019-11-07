@@ -1,4 +1,4 @@
-# Beware of the end-of-life for .net framework and .net core versions
+# Beware of the end-of-life for .Net Framework and .Net Core versions
 
 There are multiple versions of .Net Framework, and also of .Net Core.  Many of the versions have now reached their end of life point.   That means the versions are no longer supported, not with bug fixes and not with security fixes either.  
 
@@ -8,7 +8,7 @@ Looking at how this is for .Net Core, the following screen shot is from the [.Ne
 
 ![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/2019-11-06_17-10-12.jpg)
 
-Note that the only usable .Net Core version will be version 3.0 by the end of this year!  The .Net Core 2.1 will be on LTS.  
+Note that the only fully supported .Net Core version will be version 3.0 by the end of this year!  The .Net Core 2.1 will be on LTS however.  
 
 The [.Net Core Support Policy](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) describes in more details how this works, also what release cadence they have right now.
 
@@ -18,9 +18,15 @@ And a similar list for the [.Net Framework lifecycle](https://dotnet.microsoft.c
 
 As can be seen here the .net 4.0 to .net 4.5.1 is at end of life. If you got anything here, it is really time to upgrade.
 
-Now all of this doesn't mean that you can't use the older versions, at least when they are fairly new, likt .Net Core 2.2.  But, as time goes on, you could expect to see other tools dropping support.  
+## Don't panic
 
-For [NUnit](https://nunit.org) - support for .Net Core 1.* is being dropped now. 
+Now all of this doesn't mean that you can't use the older versions, at least when they are fairly new, like .Net Core 2.2.  It is more about the risk increasing as other parts of your system evolves.
+
+What you will see is that there will be no further minor upgrades, and no bugs and security fixes on your chosen framework version.  This may not be that much of an issue for the near future. Depending on what operating systems you're supporting, you may get into unwanted situation for newer ones.  It may mean you might need to hold back on updating certain other components in your system.
+
+And, as time goes on, you could expect to see other tools dropping support.  
+
+E.g. For [NUnit](https://nunit.org) - support for .Net Core 1.* is being dropped now.
 
 ## Supported OS lifecycles
 
