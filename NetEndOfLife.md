@@ -1,4 +1,4 @@
-# Beware of the end-of-life for .Net Framework and .Net Core versions
+<!--# Beware of the end-of-life for .Net Framework and .Net Core versions -->
 
 There are multiple versions of .Net Framework, and also of .Net Core.  Many of the versions have now reached their end of life point.   That means the versions are no longer supported, not with bug fixes and not with security fixes either.  
 
