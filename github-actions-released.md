@@ -93,7 +93,7 @@ And running this build gives:
 
 ![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/2019-11-19_20-19-05.jpg)
 
-##### Credit:  This gist uses actions provided by [Warren Buckley](https://github.com/warrenbuckley)
+*Credit:  This gist uses actions provided by [Warren Buckley](https://github.com/warrenbuckley)*
 
 Building .Net Framework projects are easy with Github actions, but if you're using the legacy project format, you should first try to [migrate to the new SDK format](http://hermit.no/moving-to-sdk-style-projects-and-package-references-in-visual-studio-part-2/).
 
