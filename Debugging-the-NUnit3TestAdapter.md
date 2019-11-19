@@ -94,7 +94,7 @@ build -c debug
 build -t package -c debug
 ```
 Notice the version number created for the package, underlined red below:
-![](images/packageAdapter.jpg)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/packageAdapter.jpg)
 
 Given that your nuget folder is in c:\nuget, you can now just run the command 'copynp', replacing the argument with your particular package version.
 
@@ -112,11 +112,11 @@ Notice that if you use the old legacy project format, then you better use Visual
 
 Remember to check the box for "Include prereleases", otherwise you will not see it, AND of course, switch your source to Local or use All.  You may have later versions, so it might look like this:
 
-![](images/UpdatePackage.jpg)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/UpdatePackage.jpg)
 
 If you use the new SDK format, you can go straight into the csproj file and modify that one, although, if you have multiple files, the method above could be faster.
 
-![](images/csproj.jpg)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/csproj.jpg)
 
 ## Starting a debug session
 
@@ -124,11 +124,11 @@ It doesn't matter **how** you start a test session.  YOu can use Visual Studio T
 
 Ensure you choose the red marked instance!
 
-![](images/debuglaunch.jpg)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/debuglaunch.jpg)
 
 You are then inside the adapter, and the breakpoint at the Debugger.Launch  statement. You can now set your other breakpoint, single step or whatever you need to do to figure what is going on!.
 
-![](images/Debugcode.jpg)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/Debugcode.jpg)
 
 
 
