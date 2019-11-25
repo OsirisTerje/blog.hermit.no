@@ -55,7 +55,7 @@ Go to your %userprofile% directory
 Edit the file .bashrc to include
 
 ```bash
-alias = 'az.cmd'
+alias az = 'az.cmd'
 ```
 
 Note that this command will run from a command line, but it will not consume parameters from a script.
