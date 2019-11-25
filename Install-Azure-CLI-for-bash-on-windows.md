@@ -18,7 +18,7 @@ You can run this from the bash shell, but using the full name of the cmd file:
 ```
 az.cmd --version
 ```
-![](images/2019-11-25_17-55-16.jpg)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/2019-11-25_17-55-16.jpg)
 
 
 
@@ -45,7 +45,7 @@ where az.cmd
 
 The response should be something like:
 
-![](images/2019-11-25_11-05-35.jpg)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/2019-11-25_11-05-35.jpg)
 
 
 3. Create an alias for use with git bash
