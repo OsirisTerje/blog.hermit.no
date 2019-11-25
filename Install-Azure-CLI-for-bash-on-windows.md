@@ -34,9 +34,9 @@ Download and run the [MSI Installer](https://aka.ms/installazurecliwindows) from
 
 The full installation instructions can be found [here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 
-## Setup Az.CLI for bash from Git for Windows install without Linux subsystem
+## Setup Azure CLI for bash from Git for Windows install without Linux subsystem
 
-1. If not installed, install [the MSI](https://aka.ms/installazurecliwindows) 
+1. If not installed, install [the MSI](https://aka.ms/installazurecliwindows)
 2. Check where it is installed by using the command :
 
 ```cmd
