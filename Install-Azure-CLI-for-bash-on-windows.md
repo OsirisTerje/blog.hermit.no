@@ -57,9 +57,11 @@ Edit the file .bashrc to include
 ```bash
 alias az='az.cmd'
 ```
-Note no spaces between the alias and the command!
+Note 1:   No spaces between the alias and the command!
 
-Note that this command will run from a command line, but it will not consume parameters from a script.
+Note 2:   Sometimes you need to use ', and sometimes " works.  If it fails, try the other. 
+
+Note 3:   This command will run from a command line, but it will not consume parameters from a script.
 
 If all you want to do is to run some Azure CLI commands, this should be sufficient. 
 
