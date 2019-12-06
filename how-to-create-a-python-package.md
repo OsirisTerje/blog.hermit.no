@@ -107,10 +107,10 @@ It will take a few seconds for the package to register after your upload.  Watch
 pip install --index-url https://test.pypi.org/simple/ --no-deps <yourpackagename>   --user -U
 ```
 
-Run the package using Python
+Run the tool
 
 ```
-python <yourpackagename>
+yourtoolname
 ```
 
 ### Enable the tool as git command aliases
