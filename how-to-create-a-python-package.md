@@ -50,6 +50,9 @@ setuptools.setup(
     python_requires='>=3.6',
 )
 ```
+
+Note that the name only need to be like this for the test package. When you're ready to release to production, replace with only the package name itself.
+
 ### Add an empty  __init__.py file
 
 Create a folder named  <your_package_name>_pkg
