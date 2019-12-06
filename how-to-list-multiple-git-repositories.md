@@ -19,7 +19,7 @@ Listgit searches through all subfolders, and if it think it must be a git reposi
 
 If we just run it without any arguments, it will run in default mode, all flags are then false, so everything will be shown.
 
-![](images/2019-12-06-21-01-02.png)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/2019-12-06-21-01-02.png)
 
 The first repo it finds (1) is local repo only, meaning it doesn't have any remotes. 
 Then it finds a folder only  (2)
@@ -42,7 +42,7 @@ For a big folder tree there can be a lot of information, so we need some way to 
 
 The different options to run it is as shown below:
 
-![](images/2019-12-06-19-26-03.png)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/2019-12-06-19-26-03.png)
 
 If we are just looking for the remotes, we can run with the **--r** option.
 
@@ -52,7 +52,7 @@ listgits --r
 
 It will remove anything else, like empty folders and also some error messages from non-git folders.
 
-![](images/2019-12-06-21-14-14.png)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/2019-12-06-21-14-14.png)
 
 Now, if we just wanted to see which repos are local only, then we use the **--l** flag:
 
@@ -60,7 +60,7 @@ Now, if we just wanted to see which repos are local only, then we use the **--l*
 listgits --l
 ```
 
-![](images/2019-12-06-21-15-23.png)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/2019-12-06-21-15-23.png)
 
 We can also just remove the empty folders, using the **--s** flag
 
@@ -68,7 +68,7 @@ We can also just remove the empty folders, using the **--s** flag
 listgits --s
 ```
 
-![](images/2019-12-06-21-18-11.png)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/2019-12-06-21-18-11.png)
 
 And now the indenting is rather useful, since the intermediate folder is not shown.
 
@@ -83,7 +83,7 @@ Let us say we want to know which repos we have that are connected to the Azure D
 listgits --f dev.azure
 ```
 
-![](images/2019-12-06-21-23-18.png)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/2019-12-06-21-23-18.png)
 
 or we might want to see which are a wiki repo:
 
@@ -91,7 +91,7 @@ or we might want to see which are a wiki repo:
 listgits --f wiki
 ```
 
-![](images/2019-12-06-21-25-22.png)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/2019-12-06-21-25-22.png)
 
 And we find one for Github and one for Azure Devops :-)
 
