@@ -113,6 +113,14 @@ The tool will probably be updated often, so for updating it:
 pip install listgits --user -U
 ```
 
+## Running on the Linux subsystem for Windows
+
+You need to use the full name of the executable, which is  
+
+```cmd
+listgits.exe
+```
+
 ## Tip
 
 There is another option **--g**.   This will be covered in an upcoming blog post, but you should be able to figure it out!
