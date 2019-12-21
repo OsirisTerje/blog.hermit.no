@@ -132,3 +132,6 @@ or even as a short command
 git lg
 ```
 
+### Statistics for the package
+
+[PyPiStats](https://pypistats.org/)
