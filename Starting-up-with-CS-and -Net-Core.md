@@ -126,9 +126,65 @@ Now, take a look inside the csproj files and see that it has now added a Project
   </ItemGroup>
 ```
 
+Now change your program code in Program.cs to look like:
 
+```csharp
+using System;
+using System.Linq;
 
+namespace cons
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            if (!args.Any())
+            {
+                Console.WriteLine("Math arg1 arg2");
+                return;
+            }
 
+            if (args.Length != 2)
+            {
+                Console.WriteLine($"Math needs two arguments, just got {args.Length}");
+                return;
+            }
+
+            var ok = double.TryParse(args[0], out double a);
+            if (!ok)
+            {
+                Console.WriteLine($"First argument must be a float number, but was {args[0]}");
+                return;
+            }
+
+            ok = double.TryParse(args[1], out double b);
+            if (!ok)
+            {
+                Console.WriteLine($"Second argument must be a float number, but was {args[1]}");
+                return;
+            }
+
+            var math = new MyLib.Math();
+            var result = math.Add(a, b);
+            Console.WriteLine($"Result is {result:F2}");
+        }
+    }
+}
+
+```
+
+And you can try to run it doing :
+
+```
+dotnet run 42.42  30.10
+```
+or without arguments or whatever, to check the error handling.
+
+Notice in the code the use of string interpolation, using the `$" {somevar}"` syntax.
+
+Notice also the inclusion of the `System.Linq`, which gave you access to the Any method. 
+
+And notice the use of the `var` keyword, which says that the variable should be anything inferred by what is on the right hand side.  So in this case the `result` will be a double, because the math.Add statement returns a double.
 
 
 
