@@ -106,7 +106,7 @@ Now from the context menu on that node, select Add/Existing projects, and locate
 
 When finished, it should look like:
 
-![](images/sln-example.jpg)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/sln-example.jpg)
 
 
 Select the top level Build menu, and do Build solution
@@ -119,6 +119,12 @@ Ensure the Cons and the Test have TargetFramework set to netcoreapp3.1 and the M
 Now, click the Dependency node on Cons and select Add Project Reference. and then select the MyMath project.  Do the same for the Test project.
 
 Now, take a look inside the csproj files and see that it has now added a ProjectReference node.  Now you know how it looks, and you can add these in the editor later, if you prefer that.
+
+```
+<ItemGroup>
+    <ProjectReference Include="..\mylib\MyMath.csproj" />
+  </ItemGroup>
+```
 
 
 
