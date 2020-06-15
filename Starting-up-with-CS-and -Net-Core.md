@@ -320,19 +320,149 @@ This property is now read only from the outside.  The private set'er ensures we 
 
 Then, make the Parse method public too. We do this so that we can test this by itself.  Make a /// comment above the Parse method in Visual Studio, it should expand to a comment block:  Add the comment `Made public for testing`
 
-Go back to the test project, and in the same test class (we could make a new one, but just for speedy dev now, we'll continue with the same).
+Go back to the test project, and create a new test class for testing the Program class. The other is now for Math Test. And yes, you should rename it!
 
 Add a new Test method, but now we shall use another type of test:
 
 ```csharp
+using System.Collections.Generic;
+using cons;
+using NUnit.Framework;
+
+namespace examples
+{
+    public class ProgramTest
+    {
+        [TestCase("45,5", "45", 90.5)]
+        public void TestRunMethod(string a, string b, double expected)
+        {
+            var sut = new Program(new List<string> {a,b});
+
+            var result = sut.Run();
+
+            Assert.That(result, Is.EqualTo(expected).Within(0.001));
+        }
+    }
+}
+```
+
+This is a parameterized tests, and we can add more cases if we like.  Add a few more to check. 
+
+Running this test, will show it as red.  We sort of knew that already, so we have to dig deeper.  We know that the Math test is green, this is sort of integrating the two.  Let us see if we can remove the Math class from the equation first.
+
+We start off by adding an interface to the Math class:
+
+```csharp
+    public interface IMath
+    {
+        double Add (double a, double b);
+    }
+
+    public class Math : IMath
+    {
+        public double Add (double a, double b)
+        {
+            return a + b;
+        }
+    }
+```
+
+And then we inject that into the Program instead of new'ing it up internally:
+
+```csharp
+ public class Program
+    {
+        static void Main(string[] args)
+        {
+            var program = new Program(args, new MyLib.Math());
+            program.Run();
+        }
+
+        private readonly IReadOnlyCollection<string> arguments;
+        private IMath Math { get; }
+
+        public Program(IReadOnlyCollection<string> args, IMath math)
+        {
+            arguments = args;
+            Math = math;
+        }
+```
+
+and using it, we can remove the new'ing further down, and just use the private Math Property.  Notice we don't have any setter on it, since it is initialized in the constructor.
+
+```csharp
+        var result = Math.Add(result1.Result, result2.Result);
+        Console.WriteLine($"Result is {result:F2}");
+        return result;
+```
+
+Now, we can turn to the test again, and let us start with adding in mocking.
+
+In the test project csproj file, add in the NSubstitute package:
+
+```xml
+ <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="NSubstitute" Version="4.2.2" />
+  </ItemGroup>
+```
+
+First, you need to add in the `new MyLib.Math()` to the ctor for the Program call.  
+
+Then create a new copy of that test, call it TestRunMethodOnly, but now add in a mock for the Math instance.
+
+```csharp
+        [Test]
+        public void TestRunMethodOnly(string a, string b, double expected)
+        {
+            var math = Substitute.For<IMath>();
+            math.Add(45.4, 45).Returns(90.5);
+            var sut = new Program(new List<string> { "45,5", "45" }, math);
+
+            var result = sut.Run();
+
+            Assert.That(result, Is.EqualTo(expected).Within(0.001));
+        }
 
 ```
 
+Try to run these.  You will see they both are red, which means the error must be in the Program class, since the last one doesn't have the real Math class, but are using a mock.
 
+Now, let us test the Parse method. Notice we still need to construct the Program class, but we will not be using the arguments, so they can be dummies both of them. We will still use the same arguments though, just since we have it.
 
+```csharp
+        [TestCase("10", 10.0)]
+        [TestCase("20.4", 20.4)]
+        [TestCase("45.5", 45.5)]
+        public void TestParse(string arg, double expected)
+        {
+            var math = Substitute.For<IMath>();
+            var sut = new Program(new List<string> { "45.5", "45" }, math);
+            var result = sut.Parse(arg, "whatever");
+            Assert.Multiple(() =>
+            {
+                Assert.That(result.Ok);
+                Assert.That(result.Result, Is.EqualTo(expected).Within(0.001));
+            });
+        }
+```
 
+Running this, we get the following results:
 
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/testfails.jpg)
 
+And, we see that regardless of what we give in, the result is equal to 45.5.  Which incidentially is the same number as what we have inserted as parameter in the constructor, so the Parse method seems to pick that one up instead of the real parameter. 
+
+Looking at the Parse method we see the line:
+
+```csharp
+public (bool Ok, double Result) Parse(string arg, string position)
+        {
+            var ok = double.TryParse(arguments.First(), out double parsedValue);
+```
+and indeed, the argument is arguments.First(), and not the arg parameter to the method.  We fix this, and then rerun the tests:
 
 
 
