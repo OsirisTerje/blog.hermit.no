@@ -32,7 +32,7 @@ Optionally you can also install [Visual Studio (large IDE)](https://visualstudio
 
 ## Basic c# .net core command line application
 
-Create a basic application:
+Create a basic application, Add a folder Test and then there:
 
 ```
 dotnet new nunit
@@ -64,11 +64,64 @@ And it will start up with the project in the editor.
 
 The `dotnet new`  command has multiple templates to choose from.  Get a list by using the `dotnet new --list`
 
-Create a new folder, and then run `dotnet new console` which gives you the basic Hello World example program.
+Create a new sibling folder to test (name it cons), and then run `dotnet new console` which gives you the basic Hello World example program.
 
-You can also add another folder, and then run `dotnet new classlib`.
+You can also add yet another sibling folder MyLib, and then run `dotnet new classlib`.
 
 *Notice, some of the classnames and namespaces are in lower case only.  In C# the convention is Pascal convention,  first letter Uppercase, the rest lower case.*
+
+[More info on dotnet new](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new)
+
+Now change the name from Class1 to Math
+
+Add a method like:
+
+```
+public double Add (double a, double b)
+{
+    return a + b;
+}
+
+```
+
+The project is called mylib (as the file mylib.csproj).  You rename this to e.g. MyMath.csproj.
+
+Now, go back to the root folder for these three projects and run:
+
+```
+dotnet new sln
+```
+
+It will create a file named after the folder you're in, in my case `examples.sln`
+
+Assuming you have installed VS Community edition, start it up doing:
+
+```
+devenv examples.sln
+```
+
+It will be slower on startup than VS code, as expected - it is a bigger IDE, but after a while you'll see the Solution explorer to the right side, showing a single node named Solution (which is the last file you created)
+
+Now from the context menu on that node, select Add/Existing projects, and located and add the three csproj files you have recently created. 
+
+When finished, it should look like:
+
+![](images/sln-example.jpg)
+
+
+Select the top level Build menu, and do Build solution
+
+If you get any problems, open up the 3 csproj files (double click in sln).
+Ensure the Cons and the Test have TargetFramework set to netcoreapp3.1 and the MyMath have the same set to netstandard2.1
+
+*Do another build, and you should be fine..... perhaps a context menu Restore Nuget packages, if it is hard to get going.*
+
+Now, click the Dependency node on Cons and select Add Project Reference. and then select the MyMath project.  Do the same for the Test project.
+
+Now, take a look inside the csproj files and see that it has now added a ProjectReference node.  Now you know how it looks, and you can add these in the editor later, if you prefer that.
+
+
+
 
 
 
