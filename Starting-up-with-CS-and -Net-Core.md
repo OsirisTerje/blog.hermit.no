@@ -333,7 +333,7 @@ namespace examples
 {
     public class ProgramTest
     {
-        [TestCase("45,5", "45", 90.5)]
+        [TestCase("45.5", "45", 90.5)]
         public void TestRunMethod(string a, string b, double expected)
         {
             var sut = new Program(new List<string> {a,b});
@@ -415,15 +415,15 @@ Then create a new copy of that test, call it TestRunMethodOnly, but now add in a
 
 ```csharp
         [Test]
-        public void TestRunMethodOnly(string a, string b, double expected)
+        public void TestRunMethodOnly()
         {
             var math = Substitute.For<IMath>();
-            math.Add(45.4, 45).Returns(90.5);
-            var sut = new Program(new List<string> { "45,5", "45" }, math);
+            math.Add(45.5, 45).Returns(90.5);
+            var sut = new Program(new List<string> { "45.5", "45" }, math);
 
             var result = sut.Run();
 
-            Assert.That(result, Is.EqualTo(expected).Within(0.001));
+            Assert.That(result, Is.EqualTo(90.5).Within(0.001));
         }
 
 ```
