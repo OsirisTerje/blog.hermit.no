@@ -134,7 +134,7 @@ using System.Linq;
 
 namespace cons
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -176,7 +176,8 @@ namespace cons
 And you can try to run it doing :
 
 ```
-dotnet run 42.42  30.10
+dotnet run 45.5  45
+Result is 90.50
 ```
 or without arguments or whatever, to check the error handling.
 
@@ -185,6 +186,150 @@ Notice in the code the use of string interpolation, using the `$" {somevar}"` sy
 Notice also the inclusion of the `System.Linq`, which gave you access to the Any method. 
 
 And notice the use of the `var` keyword, which says that the variable should be anything inferred by what is on the right hand side.  So in this case the `result` will be a double, because the math.Add statement returns a double.
+
+Now, the code is a bit duplicated, and the static Main is a bit big, so let us rearrange it a bit.
+
+```
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace cons
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            var program = new Program(args);
+            program.Run();
+        }
+
+        private readonly IReadOnlyCollection<string> arguments;
+
+        public Program(IReadOnlyCollection<string> args)
+        {
+            arguments = args;
+        }
+
+        public void Run()
+        {
+            if (!arguments.Any())
+            {
+                Console.WriteLine("Math arg1 arg2");
+                return;
+            }
+
+            if (arguments.Count != 2)
+            {
+                Console.WriteLine($"Math needs two arguments, just got {arguments.Count}");
+                return;
+            }
+
+            var result1 = Parse(arguments.First(), "First");
+            if (!result1.Ok)
+                return;
+            var result2 = Parse(arguments.Skip(1).First(), "Second");
+            if (!result2.Ok)
+                return;
+            
+            var math = new MyLib.Math();
+            var result = math.Add(result1.Result, result2.Result);
+            Console.WriteLine($"Result is {result:F2}");
+        }
+
+        private (bool Ok, double Result) Parse(string arg, string position)
+        {
+            var ok = double.TryParse(arguments.First(), out double parsedValue);
+            if (!ok)
+            {
+                Console.WriteLine($"{position} argument must be a float number, but was {arg}");
+            }
+
+            return (ok, parsedValue);
+        }
+    }
+}
+
+```
+
+We have now introduced a few more concepts:
+
+* The program is split into a simple static Main, and the rest as Instance methods.
+* Constructors with parameters
+* Local member variable
+* Generic list with string
+* Tuples as results from a method
+* Private function
+
+```
+dotnet run 45.5  45
+Result is 91.00
+```
+
+Oops - something went wrong somewhere.....   That result is not correct.
+
+## Unit testing
+
+Now go into the test project.
+
+Return to Visual Studio,a dn look at the left side.  You should see a Test Explorer window there.  (If not, get it from the top menu, Test/Test Explorer)
+
+Press the Run All button to the left in the top button bar of that hub.
+
+It should go green.  Double click the Test1 node, to see the code.
+
+We now want to unit test the program we wrote.  
+
+Let us start with checking the Math library we had
+
+```csharp
+        [Test]
+        public void TestMath()
+        {
+            var sut = new MyLib.Math();
+            var result = sut.Add(45.5, 45);
+            Assert.That(result, Is.EqualTo(90.5).Within(0.001));
+        }
+```
+
+Notice the Within constraint added.  Doubles are never exact, so we put a range to it.
+
+Now do a Test All again, and it should go green. 
+
+#### Testing the program
+
+The program itself seems to have the error, but it is not that easy to test.  So let us make the program itself more testable.
+
+First, add a project reference in the Test project to the cons project.
+
+Then make the Run method return a double, which should be the result from the Add operation.  There is one snag here, and that is in case of errors, we can't really see that explicitly.  So we will introduce a bool Property.
+
+Add the following to the class:
+
+```csharp
+        public bool Ok { get; private set; } = false;
+```
+
+Now, in the Run method, after the parsing, just before the call the Math.Add, do:
+
+```csharp
+    Ok = true;
+```
+
+This property is now read only from the outside.  The private set'er ensures we can set it from inside the class.
+
+Then, make the Parse method public too. We do this so that we can test this by itself.  Make a /// comment above the Parse method in Visual Studio, it should expand to a comment block:  Add the comment `Made public for testing`
+
+Go back to the test project, and in the same test class (we could make a new one, but just for speedy dev now, we'll continue with the same).
+
+Add a new Test method, but now we shall use another type of test:
+
+```csharp
+
+```
+
+
+
 
 
 
