@@ -43,7 +43,7 @@ The content of the nuget.config should be like:
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>    
     <packageSources>    
-        <add key="local" value="c:\debug" />
+        <add key="local" value="c:\nuget" />
     </packageSources>
 </configuration>
 ```
