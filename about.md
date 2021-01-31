@@ -8,10 +8,17 @@ guid: http://hermit.no/?page_id=160526
 catchevolution-sidebarlayout:
   - default
 ---
-I am <a href="https://solidify.se/terje-sandstrom-joins-solidify/" target="_blank" rel="noopener noreferrer">Chief Scientific Officer</a> at <a href="https://solidify.se/" target="_blank" rel="noopener noreferrer">Solidify AB</a>, a Microsoft Visual Studio and Development Technologies MVP, a member of the NUnit core team, and  a model railroad enthusiast.
-My main focus is best described as Software Craftsmanship, with the aspects that come from that. I do DevOps (aka ALM, and was awarded Microsoft MVP back in 2009 for work in that area, and have been re-awarded now for 10 years.). I am very much into Scrum/Agile/Lean processes, but really love to go all the way down to pure coding. The truth is in the code!
+I am a Microsoft Visual Studio and Development Technologies MVP, a member of the NUnit core team, and  a model railroad enthusiast.
 
-My possible areas of engagement can be divided into three parts:
+My main focus is best described as Software Craftsmanship, with the aspects that come from that. I do DevOps (aka ALM, and was awarded Microsoft MVP back in 2009 for work in that area, and have been re-awarded now for 11 years.). I am very much into Scrum/Agile/Lean processes, but really love to go all the way down to pure coding. The truth is in the code!
+
+I am also an Open Source enthusiast, and believe that companies and individuals can benefit a lot - not only from using open source, which they already do more than they realize, but also from contributing to open source. The effect of contributing to open source work can not be understated, it changes your culture in a very positive way, and you get a much broader global engagement that sticking to keeping your code closed.  Invite me in to talk about it!
+
+My possible areas of engagement can be divided into four parts:
+
+<strong>Coding and Design</strong>
+
+I am a strong believer in good coding practices, beautiful code, minimalistic coding, pragmatism, strongly typed code, and an overall shift-left thinking to everything that relates to coding.  The language of use doesn't really matter, but for myself I am mostly using C#, dabbles with Python, a bit of C/C++ and otherwise whatever comes my way.  
 
 <strong>Management consulting</strong>
 
