@@ -8,6 +8,9 @@ guid: http://hermit.no/?page_id=160526
 catchevolution-sidebarlayout:
   - default
 ---
+
+** MÅ REDIGERERES DIREKTE I WP**
+
 I am a Microsoft Visual Studio and Development Technologies MVP, a member of the NUnit core team, and  a model railroad enthusiast.
 
 My main focus is best described as Software Craftsmanship, with the aspects that come from that. I do DevOps (aka ALM, and was awarded Microsoft MVP back in 2009 for work in that area, and have been re-awarded now for 11 years.). I am very much into Scrum/Agile/Lean processes, but really love to go all the way down to pure coding. The truth is in the code!
