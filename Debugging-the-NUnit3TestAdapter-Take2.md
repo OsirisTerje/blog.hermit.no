@@ -1,13 +1,14 @@
-<!-- # Debugging the NUnit3TestAdapter -->
+<!-- # Debugging the NUnit3TestAdapter Take 2-->
+
+## Background
+
+In version 4.2 of the NUnit3TestAdapter debugging has been made a bit simpler.  For the earlier versions, see [Debugging the NUnit3TestAdapter](http://hermit.no/debugging-the-nunit3testadapter/).
 
 ## Introduction
 
-A test adapter sits between a TestHost and the test framework.  If you use Visual Studio or dotnet, both starts up a TestHost as a seperate process.  The testhost is responsible for locating the adapters, and then invoke them to run the test frameworks on the test code.  Debugging the adapters is hard, because it sits between these processes, of which you have no control.  The way to handle this is to enable launching the debugger from inside the adapter code.  This post details how you do that.
+A test adapter sits between a TestHost and the test framework.  If you use Visual Studio or dotnet, both starts up a TestHost as a separate process.  The testhost is responsible for locating the adapters, and then invoke them to run the test frameworks on the test code.  Debugging the adapters is hard, because it sits between these processes, of which you have no control.  The way to handle this is to enable launching the adapter in debug mode.  This post details how you do that.
 
-Debugging the adapter require you to compile and consume a debug version of the adapter.  The package you debug is the nuget package. 
-
-(Earlier we used the VSIX for debugging, but it is now simpler to use the nuget package.  It is still possible to use the VSIX, it follows the normal way for debugging VSIX packages, but this description will concentrate on the nuget package.)
-
+First, debugging the adapter require you to compile and consume a debug version of the adapter.  The package you debug is the nuget package.
 
 
 ## Setting up for debugging
@@ -15,14 +16,14 @@ Debugging the adapter require you to compile and consume a debug version of the 
 Create a folder to keep the nuget debug packages.  
 We suggest you use the folder C:\nuget
 
-
-
 Clone the adapter repository:
 ```
 git clone https://github.com/nunit/nunit3-vs-adapter.git
 ```
 
-Create a local branch,  e.g. debug
+You may choose to create a local branch,  e.g. debug, but you don't actually need to that anymore
+
+If you prefer do:
 
 ```
 git checkout -b debug
@@ -66,24 +67,18 @@ or use Visual Studio Code
 code .
 ```
 
-## Modifying the adapter code for debugging
+## No need anymore to modify the adapter code for debugging
 
-The reason for having this in a seperate branch is that we need to do a few changes that should not go back into the public repository.  
+In earlier versions before 4.2, you had to modify the code.  You don't need that anymore.
 
-The files we need to change is the **build.cake** file, and then either the NUnit3TestExecutor.cs - if you want to debug test execution - or NUnit3TestDiscoverer.cs
+However, if you plan to change something in the adapter, then you can follow the steps below here. 
+
+The only file you may want to change is the **build.cake** file.
 
 In the build.cake file, go to Line 16, and add a useful modifer - it will be the preview version for the package, so something like '-d01' would go fine.  
 **Ensure you have the dash there!**
 
 If you do changes in the adapter code, you can just increment this number, for each one.
-
-Now, let's assume you want to debug the execution phase.  This is the most used one, the procedure is the same for the discovery though.
-
-At line 24, there is a commented out line, which define the symbol LAUNCHDEBUGGER.
-Uncomment this line.
-
-When the adapter is fired up from the testhost, it will call either the method RunTests(IEnumerable<string> source.....  or the method RunTests(IEnumerable<TestCase> tests .....
-The symbol we uncommented will ensure that the debugger will be launched at this particular place.
 
 ## Building a debug version
 
@@ -99,7 +94,7 @@ Notice the version number created for the package, underlined red below:
 Given that your nuget folder is in c:\nuget, you can now just run the command 'copynp', replacing the argument with your particular package version.
 
 ```
-copynp 3.16.0-d01-dbg
+copynp 4.2.0-dbg
 ```
 
 Your debug package is now in the c:\nuget folder.
@@ -120,19 +115,40 @@ If you use the new SDK format, you can go straight into the csproj file and modi
 
 ## Starting a debug session
 
-It doesn't matter **how** you start a test session.  YOu can use Visual Studio Test Explorer, or you can use the 'dotnet test' command.  Any way you choose that will trigger the adapter will cause a debug session to be started, and a dialog launch will appear:
+There are two ways to start the session, one from command line and one from Visual Studio itself.
 
-Ensure you choose the red marked instance!
+### Command line
 
+You need to add a runsettings command to your command line, like :
+```cmd
+debug test -- NUnit.DebugExecution=true
+```
+
+If you need to use a runsettings file for other purposes, just add the same setting there.
+
+### Visual Studio
+
+Add a runsettings file, or a minimum one like:
+```xml
+<RunSettings>
+   <NUnit>
+       <DebugExecution>True</DebugExecution>
+   </NUnit>
+</RunSettings>
+```
+
+Then run your test, and a debug launcher will be started:  
 ![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/debuglaunch.jpg)
 
-You are then inside the adapter, and the breakpoint at the Debugger.Launch  statement. You can now set your other breakpoint, single step or whatever you need to do to figure what is going on!.
+Choose the NUnitAdapter (red arrow), and off you go into the adapter code
 
-![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/Debugcode.jpg)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/debugpoint.png)
 
+You are then inside the adapter, and the breakpoint at a Debugger.Launch  statement. Step out of this method, and then you're at the top of the Execution process, just after initialization:
 
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/Executionstart.png)
 
-
+You can now set your other breakpoint, single step or whatever you need to do to figure what is going on!.
 
 ## Some tricks and traps
 
