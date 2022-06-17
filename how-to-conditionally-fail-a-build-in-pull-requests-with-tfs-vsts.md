@@ -27,4 +27,8 @@ In the build shown below, there are seven tasks that may give rise to warnings (
     <li>Set to:&nbsp;and(eq(variables['Agent.JobStatus'], 'SucceededWithIssues'), eq(variables['Build.Reason'], 'PullRequest'))</li>
 </ol>
 
+## YAML
+If you want a yml snippet for doing this, see [this issue comment](https://github.com/microsoft/azure-pipelines-tasks/issues/1268#issuecomment-430501012)
+
+
 &nbsp;
