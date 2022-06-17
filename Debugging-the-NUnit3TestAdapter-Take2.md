@@ -6,7 +6,7 @@ In version 4.2 of the NUnit3TestAdapter debugging has been made a bit simpler.  
 
 ## Introduction
 
-A test adapter sits between a TestHost and the test framework.  If you use Visual Studio or dotnet, both starts up a TestHost as a separate process.  The testhost is responsible for locating the adapters, and then invoke them to run the test frameworks on the test code.  Debugging the adapters is hard, because it sits between these processes, of which you have no control.  The way to handle this is to enable launching the adapter in debug mode.  This post details how you do that.
+A test adapter sits between a TestHost and the test framework.  If you use Visual Studio or dotnet, both starts up a TestHost as a separate process.  The testhost is responsible for locating the adapters, and then invoke them to run the test frameworks on the test code.  Debugging an adapter is hard, because it sits between these two processes, of which you have no control.  The way to handle this is to enable launching the adapter in debug mode.  This post details how you do that.
 
 First, debugging the adapter require you to compile and consume a debug version of the adapter.  The package you debug is the nuget package.
 
@@ -121,7 +121,7 @@ There are two ways to start the session, one from command line and one from Visu
 
 You need to add a runsettings command to your command line, like :
 ```cmd
-debug test -- NUnit.DebugExecution=true
+dotnet test -- NUnit.DebugExecution=true
 ```
 
 If you need to use a runsettings file for other purposes, just add the same setting there.
