@@ -27,8 +27,18 @@ In the build shown below, there are seven tasks that may give rise to warnings (
     <li>Set to:&nbsp;and(eq(variables['Agent.JobStatus'], 'SucceededWithIssues'), eq(variables['Build.Reason'], 'PullRequest'))</li>
 </ol>
 
+The color of the build will then be red, not yellow, but that is how the Azure Pipelines work, so - at least it will block your build and then your Pull Requests too.
+
 ## YAML
-If you want a yml snippet for doing this, see [this issue comment](https://github.com/microsoft/azure-pipelines-tasks/issues/1268#issuecomment-430501012)
+If you need a yml snippet for this, the above was converted by [Edward Bordin](https://github.com/ed-alertedh) - see [this issue comment](https://github.com/microsoft/azure-pipelines-tasks/issues/1268#issuecomment-430501012), into the following:
+
+```yml
+- script: 'echo 1>&2'
+  failOnStderr: true
+  displayName: 'If above is partially succeeded, then fail'
+  condition: eq(variables['Agent.JobStatus'], 'SucceededWithIssues')
+```
+
 
 
 &nbsp;
