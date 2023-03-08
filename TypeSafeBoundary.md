@@ -51,7 +51,7 @@ If we look at some architecture models, like the [Onion Architecture](https://je
 
 When we make a clear distinction between code that is strongly typed, and code that is weakly typed, one can imagine there being a boundary between the two - that is the **Type Safe Boundary**.
 
-![](https://raw.githubusercontent.com/OsirisTerje/osiristerje.github.io/master/images/TSB1.png)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/TSB1.png)
 
 Within the Type Safe Boundary no untyped or weakly typed code is allowed.  Any such code has to go outside the boundary, and has to be contained there.
 
