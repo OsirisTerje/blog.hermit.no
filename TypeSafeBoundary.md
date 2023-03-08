@@ -4,7 +4,7 @@
 
 I've been writing code for some decades now.  Over that time there is one thing I have learned through projects that have failed, projects that have been successes, legacy projects, greenfield projects, projects with dedicated experienced teams, projects with fresh new developers, distributed projects, closed source and open source, and all other kinds, being a consultant working with a multitude of companies and open source enthusiast, and that is - **strongly typed code** prevails. 
 
-The concept I am describing below is something I have been using for well over 20 years now, but never got around writing about.  So, here it is!
+The concept I am describing below is something I have been using for well over 20 years now, but never got around writing about.  So, here it is!!
 
 ## Strong or weak typing
 
