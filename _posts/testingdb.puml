@@ -1,0 +1,11 @@
+@startuml
+
+(*) --> "Start test design"
+
+if "Database created using Code First" then
+   --> [Yes] "Use Inmemory database"
+else
+    --> [No] "Consider using real database"
+endif
+
+@enduml

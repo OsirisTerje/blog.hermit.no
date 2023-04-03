@@ -138,7 +138,7 @@ It is fully acceptable to do conversions between untyped and typed structures.  
 
 The main purpose of the code outside the type safe boundary is to serve the code inside the boundary with fresh new objects, or opposite, deconstruct them into untyped information.
 
-That means we should see serialize and deserialize code in that area. (And fully covered by tests).  
+That means we should see serialize and de-serialize code in that area. (And fully covered by tests).  
 
 The purpose of the layer is to convert untyped information into typed objects, it serve as object factories.
 
