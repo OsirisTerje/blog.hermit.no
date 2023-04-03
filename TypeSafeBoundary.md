@@ -4,7 +4,7 @@
 
 I've been writing code for some decades now.  Over that time there is one thing I have learned through projects that have failed, projects that have been successes, legacy projects, greenfield projects, projects with dedicated experienced teams, projects with fresh new developers, distributed projects, closed source and open source, and all other kinds, being a consultant working with a multitude of companies and open source enthusiast, and that is - **strongly typed code** prevails. 
 
-The concept I am describing below is something I have been using for well over 20 years now, but never got around writing about.  So, here it is!
+The concept I am describing below is something I have been using for well over 20 years now, but never got around writing about.  So, here it is!!
 
 ## Strong or weak typing
 
@@ -51,7 +51,7 @@ If we look at some architecture models, like the [Onion Architecture](https://je
 
 When we make a clear distinction between code that is strongly typed, and code that is weakly typed, one can imagine there being a boundary between the two - that is the **Type Safe Boundary**.
 
-![](images/TSB1.png)
+![](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/images/TSB1.png)
 
 Within the Type Safe Boundary no untyped or weakly typed code is allowed.  Any such code has to go outside the boundary, and has to be contained there.
 
