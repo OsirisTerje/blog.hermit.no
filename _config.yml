@@ -6,3 +6,5 @@ description: >
   member
 
 theme: jekyll-theme-hacker
+markdown: GFM
+
