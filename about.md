@@ -13,7 +13,7 @@ catchevolution-sidebarlayout:
 
 I am a Microsoft Visual Studio and Development Technologies MVP, Head of the NUnit core development team, and a model railroad enthusiast.
 
-My main focus is best described as Software Craftsmanship, with the aspects that come from that. I do DevOps (aka ALM, and was awarded Microsoft MVP back in 2009 for work in that area, and have been re-awarded now for 11 years.). I am very much into Scrum/Agile/Lean processes but really love to go all the way down to pure coding. The truth is in the code!
+My main focus is best described as Software Craftsmanship, with the aspects that come from that. I do DevOps (aka ALM, and was awarded Microsoft MVP back in 2009 for work in that area, and have been re-awarded now for 15 years.). I am very much into Scrum/Agile/Lean processes but really love to go all the way down to pure coding. The truth is in the code!
 
 I am an ardent supporter of Open Source and firmly believe that both companies and individuals stand to gain significantly. This gain stems not only from the utilization of open-source solutions, which they often do more extensively than they might recognize, but also from active contributions to the open-source community. The impact of such contributions cannot be underestimated; they bring about a profoundly positive transformation in your organizational ethos, fostering a broader global involvement that far surpasses the insularity of keeping one's code proprietary. I would welcome the opportunity to discuss this matter further with you.
 
