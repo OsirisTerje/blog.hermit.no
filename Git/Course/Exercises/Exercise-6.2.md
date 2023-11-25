@@ -2,7 +2,7 @@
 
 Git support creating shortcuts for its commands, known as aliases.
 
-Aliases are best put into the Global section
+Aliases are best put into the Global section, or even System section if you have multiple users on the same machine. 
 
 ## **DO 1**  Shortcuts
 
@@ -12,7 +12,7 @@ Open up the global section in your editor:
 git config --global -e
 ```
 
-Check that there is no [Alias] section already
+Check that there is no `[alias]` section already
 
 If not, add a new such section
 
@@ -20,13 +20,13 @@ Now, let us look at some possible nice shortcuts.  I prefer very short single le
 
 You use git status a lot, so I would like to just use git s as a shortcut for that.  This is a simple abbreviation.
 
-Also, I often go to master, so I would like to shorten that one done, so instead of writing  git switch master,  I'll just write git m
+Also, I often go to main, so I would like to shorten that one done, so instead of writing  git switch main,  I'll just write git m
 I also often like to check all my branches, so bl for git branch --all sounds good.
 
 ```
 [alias]
     s = !git status
-    m = !git switch master
+    m = !git switch main
     bl = !git branch --all
 ```
 
@@ -40,17 +40,17 @@ Usage:
 
 ## **DO 2**  Shortcuts with parameters
 
-When at this, having to write all the stuff for creating a new branch and going to it....  lets make the shortcut  'b' to mean that.
+When at this, having to write all the stuff for creating a new branch and going to it....  It is called `switch`'ing, so lets make the shortcut  'sw' to mean ``go to a branch` and `swc` to mean `create a new branch and go to it`
 
-
-```
-    b = !git switch -c
+```alias
+    sw = !git switch
+    swc = !git switch -c
 ```
 
 Wait ....  now how do you use this ?
 
 ```
-    git b mybranch
+    git swc mybranch
 ```
 
 You can add parameters to your shortcuts, they are just being expanded to the full command, so if you make them so that the parameters comes naturally, they will stay very simple.
@@ -89,21 +89,25 @@ Lets first find the url of the origin remote:
     url = !git config --get remote.origin.url 
 ```
 Then we start our favourite browser, in this case Microsoft Edge, using the function syntax for git aliases:
-```
+
+```alias
     execurl = "!f() { exec start msedge \"$@\"; } ; f"
 ```
 
 Note here that we also use the upcoming parameter.  We need now to have the parameter $@ inside our alias, not only tucked to the end.
 
 And finally we combine the two above
-```
+
+```alias
     web = !git execurl $(git url)
 ```
 
 Now running
-```
+
+```alias
     git web
 ```
+
 brings up Microsoft Edge and takes it to the remote site. It takes us to the front page of the site.  If you want to go any particular sub-part of that, you need to extend the command above.
 
 ## **DO 5**  Functional: Gitignore
@@ -114,10 +118,13 @@ We got the gitignore file from https://gitignore.io , and we had to specify the 
 It turns out gitignore.io has an api just under there, which we can use.
 
 This function call the gitignore.io api using curl, with the selected language as a parameter
+
 ```
     ignore =  "!f() { curl -L -s https://www.gitignore.io/api/$@ ;}; f"
 ```
+
 We then add one specific for Visual Studio (or C#), and appends that to the .gitignore file !   We also add one for Python
+
 ```
     ignorevs = !git ignore visualstudio >> .gitignore
     ignorepy = !git ignore python >> .gitignore
@@ -125,8 +132,7 @@ We then add one specific for Visual Studio (or C#), and appends that to the .git
 
 We're using the appending pipe to ensure we never overwrite anything in the .gitignore, but always just appends to it.
 
-Check these out on your repo, and see that it all works.  It is very easy to forget something in these aliases. 
-
+Check these out on your repo, and see that it all works.  It is very easy to forget something in these aliases.
 
 ## More information (than you might need)
 
@@ -140,16 +146,12 @@ Parameters can be used as positional parameters too, like ${1}.  They can also h
 
 Variables can be defined inside the function:
 
-```
+```alias
 !f() { msg = ${1}; echo $msg;}; f
 ```
 
 Otherwise, see a [good source for more information on aliases](https://git.wiki.kernel.org/index.php/Aliases)
 
-
-## 
-
-
 ## Extra
 
-Think about other things that you want hard to do or annoying on the command line, and figure out how you can make an alias for them
+Think about other things that are hard to do or annoying on the command line, and figure out how you can make an alias for them.

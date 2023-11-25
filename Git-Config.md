@@ -48,8 +48,17 @@ file:C:/Users/TerjeSandstrom/.gitconfig Terje Sandstrom
 
 Using the table above, you see that this file is the global config file for user Terje Sandstrom.
 
+## Exercises and more detailed information
 
-## Links
+[Exercise 6.1](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/Git/Course/Exercises/Exercise-6.1.md)
+
+[Exercise 6.2](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/Git/Course/Exercises/Exercise-6.2.md)
+
+[Setting up diff and merge tools](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/Git/Course/DeepDives/Section6/DiffMergeTools.md)
+
+
+
+## Other Links
 
 [Official Git Config reference documentation](https://git-scm.com/docs/git-config)
 

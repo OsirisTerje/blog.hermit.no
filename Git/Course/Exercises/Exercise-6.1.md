@@ -146,5 +146,5 @@ Run
 git config -l | grep merge
 ```
 
-Go to [DeepDives/Section6/DiffMergeTools.md](../DeepDives/Section6/DiffMergeTools.md) for further instructions on setting this up
+Go to [DiffMergeTools](https://github.com/OsirisTerje/osiristerje.github.io/blob/master/Git/Course/DeepDives/Section6/DiffMergeTools.md) for further instructions on setting this up for different scenarios.  Pick the one that suits you!
 
